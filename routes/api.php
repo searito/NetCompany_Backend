@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Dashboard\DashboardController;
+use App\Http\Controllers\Api\Usuarios\UsuariosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,4 +35,11 @@ Route::group([
     'middleware'    =>  'auth:api'
 ], function (){
     Route::get('/', [DashboardController::class, 'index']);
+});
+
+Route::group([
+    'prefix'        =>  'usuarios',
+//    'middleware'    =>  'auth:api'
+], function (){
+    Route::get('/read', [UsuariosController::class, 'read']);
 });
