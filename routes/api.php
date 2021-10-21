@@ -39,7 +39,11 @@ Route::group([
 
 Route::group([
     'prefix'        =>  'usuarios',
-//    'middleware'    =>  'auth:api'
+    'middleware'    =>  'auth:api'
 ], function (){
+    Route::post('/', [UsuariosController::class, 'create']);
+    Route::put('/', [UsuariosController::class, 'update']);
     Route::get('/read', [UsuariosController::class, 'read']);
+    Route::get('/edit/{id}', [UsuariosController::class, 'edit']);
+    Route::delete('/delete/{id}', [UsuariosController::class, 'delete']);
 });
